@@ -4,9 +4,9 @@ import { createBasicConfig } from "@open-wc/building-rollup";
 const baseConfig = createBasicConfig();
 
 export default merge(baseConfig, {
-  input: './client-side-compiled/main.js',
+  input: './client-side-compiled/index.js',
   output: {
     dir: null,
-    file: '_site/scripts/main.bundled.js'
+    file: '_site/scripts/index.bundled.js'
   }
 })

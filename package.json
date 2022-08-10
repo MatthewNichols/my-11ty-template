@@ -10,7 +10,7 @@
     "debug:web": "DEBUG=Eleventy* ELEVENTY_ENV=development npx @11ty/eleventy --serve",
     "build:sass": "npx sass src/scss:styles-compiled",
     "watch:sass": "npx sass --watch src/scss:styles-compiled",
-    "post:css": "npx postcss styles-compiled/main.css > styles-compiled/main.min.css",
+    "post:css": "npx postcss styles-compiled/site.css > styles-compiled/site.min.css",
     "min:js": "npx uglify-js _site/scripts/main.bundled.js --output _site/scripts/main.min.js",
     "build:js": "tsc --build",
     "watch:js": "tsc --build --watch",
@@ -22,7 +22,7 @@
     "clean:js": "rm -rf client-side-compiled",
     "clean:css": "rm -rf styles-compiled",
     "clean:site": "rm -rf _site",
-    "clean": "npm-run-all clean:site clean:js",
+    "clean": "npm-run-all clean:site clean:js clean:css",
     "update-browserlist": "npx browserslist@latest --update-db"
   },
   "author": "Holo",
