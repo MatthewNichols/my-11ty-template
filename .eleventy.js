@@ -1,3 +1,5 @@
+const pluginWebc = require("@11ty/eleventy-plugin-webc");
+
 // If you have short codes
 //const registerShortCodes = require("./src/short-codes/");
 
@@ -19,6 +21,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.setDataDeepMerge(false);
 
+  eleventyConfig.addPlugin(pluginWebc);
+  
   // If you have short codes
   //registerShortCodes(eleventyConfig);
     
