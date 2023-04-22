@@ -2,6 +2,9 @@
 //const registerShortCodes = require("./src/short-codes/");
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.setServerOptions({
+    showAllHosts: true
+  });
   
   eleventyConfig.addPassthroughCopy({"./src/assets/img/": "img"});
   eleventyConfig.addPassthroughCopy({"./src/assets/fonts/": "fonts"});
