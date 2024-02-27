@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "My template repo for new 11ty preojects",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build:web": "ELEVENTY_ENV=production npx @11ty/eleventy",
     "serve:web": "ELEVENTY_ENV=development npx @11ty/eleventy --serve",
