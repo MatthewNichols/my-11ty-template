@@ -8,6 +8,7 @@
   <title @text="title"></title>
 </head>
 <body>
+  <h1 @html="title"></h1>
   <div id="page-content" @raw="content">
 
   </div>
