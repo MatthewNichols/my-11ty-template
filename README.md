@@ -23,10 +23,18 @@ First, the authoritative reference for 11ty is the [11ty docs](https://www.11ty.
 - Components: Webc lets you create reusable components that can be used in your pages. Components are defined in the `/src/pages/_components/` directory. Nunjucks has simular functionality.
 - Styling: out of the box you can use scss or css in the `/src/scss/` directory. The output will be output to `/styles-compiled/` prior to being copied to the `_site/styles/` directory. The output will be compiled to css and minified.
 - Client side scripting: you can write client side scripts in the `/src/client-side/` directory as typescript. The output will be output to `/client-side-compiled/` prior to being copied to the `_site/scripts/` directory.
+- Static assets: You can put static assets in the `/src/assets/` directory (which you need to create as git won't create empty directories). These will be copied to the `_site/` directory, preserving the directory structure. So if you have an image in `/src/assets/img/` it will be copied to `/_site/img/`, and any subdirectories will be created as needed.
 - `.eleventy.js`: This is the main config file for 11ty. A couple of specific things to note:
-  - `addPassthroughCopy` is pretty powerful. There are a fewe examples in the `.eleventy.js` file.
+  - `addPassthroughCopy` is pretty powerful. There are a fewe examples in the `.eleventy.js` file, and is what handles the copying of static assets mentioned above.
   - In particular, If you need to copy files to the root (like your favicon, robots.txt, etc) create a folder in `src` called `copy-to-root` and uncomment the line:
   `//eleventyConfig.addPassthroughCopy({"./src/copy-to-root/*": "."});`
+
+## Some package.json scripts
+- `dev`: starts the development server and watches for changes
+- `build`: builds the site and all assets
+- `clean`: deletes the `_site` directory, and any of the intermediate build artifacts
+- `serve-as-prod`: builds the site and all assets as a production build then serves the site without watching for changes
+- `dev-no-js`: starts the development server and watches for changes, but doesn't build any of the client side scripts
 
 ## License
 MIT
