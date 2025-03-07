@@ -9,8 +9,7 @@ export default function(eleventyConfig) {
   });
   
   // Copy assets to _site. see https://www.11ty.dev/docs/copy/ for more info
-  eleventyConfig.addPassthroughCopy({"./src/assets/img/": "img"});
-  eleventyConfig.addPassthroughCopy({"./src/assets/fonts/": "fonts"});
+  eleventyConfig.addPassthroughCopy({"./src/assets": "/"});
   eleventyConfig.addPassthroughCopy({"./client-side-compiled/**/*": "scripts"});
   eleventyConfig.addPassthroughCopy({"./styles-compiled/**/*": "styles"});
   
