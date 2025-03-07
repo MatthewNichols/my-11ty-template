@@ -4,4 +4,4 @@
 ---
 
   <h1 @html="title"></h1>
-  Cool content goes here!
+  <cool-content></cool-content>

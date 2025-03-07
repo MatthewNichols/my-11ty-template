@@ -21,7 +21,11 @@ export default function(eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.setDataDeepMerge(false);
 
-  eleventyConfig.addPlugin(pluginWebc);
+  eleventyConfig.addPlugin(pluginWebc, {
+    components: [
+      "src/pages/_components/**/*.webc"
+    ]
+  });
   
   // If you have short codes
   //registerShortCodes(eleventyConfig);
