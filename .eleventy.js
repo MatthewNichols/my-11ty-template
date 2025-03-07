@@ -8,11 +8,14 @@ export default function(eleventyConfig) {
     showAllHosts: true
   });
   
+  // Copy assets to _site. see https://www.11ty.dev/docs/copy/ for more info
   eleventyConfig.addPassthroughCopy({"./src/assets/img/": "img"});
   eleventyConfig.addPassthroughCopy({"./src/assets/fonts/": "fonts"});
   eleventyConfig.addPassthroughCopy({"./client-side-compiled/**/*": "scripts"});
   eleventyConfig.addPassthroughCopy({"./styles-compiled/**/*": "styles"});
   
+  // If you need to copy files to the root (like your favicon, robots.txt, etc) 
+  // create a folder in src called copy-to-root and uncomment the line below
   //eleventyConfig.addPassthroughCopy({"./src/copy-to-root/*": "."});
 
   /* If you have any libs being pulled from node_modules you might do it like below */

@@ -15,6 +15,18 @@ No guarentees, but I do make an effort to make it generally useful for a new pro
 - Run `npm run dev` to start the development server and watch for changes
 - If all is well, you should be able to view the site at http://localhost:8080
 
+## Some 11ty stuff
+First, the authoritative reference for 11ty is the [11ty docs](https://www.11ty.dev/docs/). 11ty (like many things) is a bit like German style board games; you can learn enough to get started in 30 minutes, but it will take you a long time to learn everything. But here are a few things that are specific to this setup:
+- Layout files: Layout files are used to define the structure of your pages. They are defined in the `/src/pages/_includes/` directory.
+- Front Matter: Front Matter is a way to add data to your pages. This data is available in your templates. In this setup in particular it is used to set the title of the page and the layout file being used. There is a defaults file at `/src/pages/pages.json` that sets some defaults for the site. Override in individual files as needed.
+- Pages: If you want to create a new page, create a new file in the `/src/pages/` directory. The file name should be the name of the page, and you can use webc (*.webc), markdown (*.md), or Nunjucks (*.njk) in the file, depending on your needs and preferences.
+- Components: Webc lets you create reusable components that can be used in your pages. Components are defined in the `/src/pages/_components/` directory. Nunjucks has simular functionality.
+- Styling: out of the box you can use scss or css in the `/src/scss/` directory. The output will be output to `/styles-compiled/` prior to being copied to the `_site/styles/` directory. The output will be compiled to css and minified.
+- Client side scripting: you can write client side scripts in the `/src/client-side/` directory as typescript. The output will be output to `/client-side-compiled/` prior to being copied to the `_site/scripts/` directory.
+- `.eleventy.js`: This is the main config file for 11ty. A couple of specific things to note:
+  - `addPassthroughCopy` is pretty powerful. There are a fewe examples in the `.eleventy.js` file.
+  - In particular, If you need to copy files to the root (like your favicon, robots.txt, etc) create a folder in `src` called `copy-to-root` and uncomment the line:
+  `//eleventyConfig.addPassthroughCopy({"./src/copy-to-root/*": "."});`
 
 ## License
 MIT
