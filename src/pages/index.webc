@@ -1,7 +1,5 @@
 ---
-  layout: base-layout.webc
   title: Home
 ---
-
   <h1 @html="title"></h1>
   <cool-content></cool-content>
