@@ -29,12 +29,30 @@ First, the authoritative reference for 11ty is the [11ty docs](https://www.11ty.
   - In particular, If you need to copy files to the root (like your favicon, robots.txt, etc) create a folder in `src` called `copy-to-root` and uncomment the line:
   `//eleventyConfig.addPassthroughCopy({"./src/copy-to-root/*": "."});`
 
+## Markdown Features
+[Markdown](https://commonmark.org/) is a neat way to write content in the cases where it is suffiant. It starts to break down a bit at the edges, but there are some nice extentions, some of which I have included in this template. Here are a few of the features that are included, along with a tip/trick or two:
+- Use markdown in WebC components: If you include the following in a webc component or page:
+  ```
+  <template webc:type="11ty" 11ty:type="liquid,md">
+  ## This is markdown
+
+  - This is a list
+  - of import things
+  - rendered from markdown?
+  </template>
+  ```
+  it will be rendered as html, and you can also use `liquid` template features. See more at the [11ty WebC docs](https://www.11ty.dev/docs/languages/webc/#using-template-syntax-to-generate-content)
+
 ## Some package.json scripts
 - `dev`: starts the development server and watches for changes
 - `build`: builds the site and all assets
 - `clean`: deletes the `_site` directory, and any of the intermediate build artifacts
 - `serve-as-prod`: builds the site and all assets as a production build then serves the site without watching for changes
 - `dev-no-js`: starts the development server and watches for changes, but doesn't build any of the client side scripts
+
+## Desired improvements
+- I would love to have asset cache busting (the ability to have assets like images, css, etc... automatically be loaded fresh after a new build irrispecive of cache) built in.
+- Add the excellent `markdown-it-attrs` (https://github.com/arve0/markdown-it-attrs) plugin to extend the markdown syntax to include classes and ids on elements. 
 
 ## License
 MIT
