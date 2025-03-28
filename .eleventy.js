@@ -1,4 +1,5 @@
 import pluginWebc from "@11ty/eleventy-plugin-webc";
+import { registerExtensions } from "./src/11ty-extensions/index.js";
 
 // If you have short codes
 //const registerShortCodes = require("./src/short-codes/");
@@ -28,7 +29,9 @@ export default function(eleventyConfig) {
       "src/pages/_components/**/*.webc"
     ]
   });
-  
+
+  registerExtensions(eleventyConfig);
+
   // If you have short codes
   //registerShortCodes(eleventyConfig);
     
