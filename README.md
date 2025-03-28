@@ -53,6 +53,9 @@ First, the authoritative reference for 11ty is the [11ty docs](https://www.11ty.
 ## Desired improvements
 - I would love to have asset cache busting (the ability to have assets like images, css, etc... automatically be loaded fresh after a new build irrispecive of cache) built in.
 - Add the excellent `markdown-it-attrs` (https://github.com/arve0/markdown-it-attrs) plugin to extend the markdown syntax to include classes and ids on elements. 
+- Add walk through for hosting on github pages, netlify, cloudflare pages, etc
+- Add walk through for scheduled deploy.
+- Cache busting for assets
 
 ## License
 MIT
