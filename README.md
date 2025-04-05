@@ -43,7 +43,7 @@ First, the authoritative reference for 11ty is the [11ty docs](https://www.11ty.
   ```
   it will be rendered as html, and you can also use `liquid` template features. See more at the [11ty WebC docs](https://www.11ty.dev/docs/languages/webc/#using-template-syntax-to-generate-content)
 
-- Attributes: the `markdown-it-attrs` (https://github.com/arve0/markdown-it-attrs) plugin allows you to add classes and ids to elements in markdown.
+- Attributes and fenced divs: the `markdown-it-attrs` (https://github.com/arve0/markdown-it-attrs) plugin allows you to add classes and ids to elements in markdown, and the 'markdown-it-div' (https://github.com/kickscondor/markdown-it-div) plugin allows you to add fenced divs in markdown.
   ```
   ### This is a markdown page
 
@@ -52,6 +52,23 @@ First, the authoritative reference for 11ty is the [11ty docs](https://www.11ty.
   This is a paragraph with a class. { .class-name }
 
   This is a paragraph with an id. { #id-name }
+
+  ::: warning #id-name
+  This is rendered in a div with a class of `warning` and an id of `id-name`
+  :::
+
+  ::: outer-div
+  ### This is rendered in a div with a class of `outer-div`
+
+  ::: inner-div
+  This is rendered in a div with a class of `inner-div`
+  :::
+
+  ::: inner-div
+  This is another rendered in a div with a class of `inner-div`
+  :::
+
+  :::
   ```
   The above will render as:
   ```html
@@ -59,6 +76,20 @@ First, the authoritative reference for 11ty is the [11ty docs](https://www.11ty.
   <p>This is a paragraph.</p>
   <p class="class-name">This is a paragraph with a class.</p>
   <p id="id-name">This is a paragraph with an id.</p>
+
+  <div class="warning" id="id-name">
+    <h3>This is rendered in a div with a class of `warning` and an id of `id-name`</h3>
+  </div>
+
+  <div class="outer-div">
+    <h3>This is rendered in a div with a class of `outer-div`</h3>
+    <div class="inner-div">
+      <h3>This is rendered in a div with a class of `inner-div`</h3>
+    </div>
+    <div class="inner-div">
+      <h3>This is another rendered in a div with a class of `inner-div`</h3>
+    </div>
+  </div>
   ```
   See more at https://github.com/arve0/markdown-it-attrs
 
