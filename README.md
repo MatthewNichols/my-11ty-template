@@ -1,7 +1,7 @@
 # my-11ty-template
 My starting point for new [11ty](https://www.11ty.dev/) projects. 11ty is a Jamstack static site generator that is simple to use/setup. It is easily hostable on Netlify, Github Pages or Cloudflare Pages, and countless other services.  
 
-No guarentees, but I do make an effort to make it generally useful for a new project. It should run anywhere you cna run NodeJs If you have any questions, comments, or suggestions, please let open an issue and I will try to respond as soon as I can.  
+No guarentees, but I do make an effort to make it generally useful for a new project. It should run anywhere you can run NodeJs If you have any questions, comments, or suggestions, please let open an issue and I will try to respond as soon as I can.  
 
 ## Key Dependencies
 - nodejs and npm (whatever 11ty requires)
@@ -43,6 +43,26 @@ First, the authoritative reference for 11ty is the [11ty docs](https://www.11ty.
   ```
   it will be rendered as html, and you can also use `liquid` template features. See more at the [11ty WebC docs](https://www.11ty.dev/docs/languages/webc/#using-template-syntax-to-generate-content)
 
+- Attributes: the `markdown-it-attrs` (https://github.com/arve0/markdown-it-attrs) plugin allows you to add classes and ids to elements in markdown.
+  ```
+  ### This is a markdown page
+
+  This is a paragraph.
+
+  This is a paragraph with a class. { .class-name }
+
+  This is a paragraph with an id. { #id-name }
+  ```
+  The above will render as:
+  ```html
+  <h3>This is a markdown page</h3>
+  <p>This is a paragraph.</p>
+  <p class="class-name">This is a paragraph with a class.</p>
+  <p id="id-name">This is a paragraph with an id.</p>
+  ```
+  See more at https://github.com/arve0/markdown-it-attrs
+
+
 ## Some package.json scripts
 - `dev`: starts the development server and watches for changes
 - `build`: builds the site and all assets
@@ -51,8 +71,7 @@ First, the authoritative reference for 11ty is the [11ty docs](https://www.11ty.
 - `dev-no-js`: starts the development server and watches for changes, but doesn't build any of the client side scripts
 
 ## Desired improvements
-- [ ] I would love to have asset cache busting (the ability to have assets like images, css, etc... automatically be loaded fresh after a new build irrispecive of cache) built in.
-- [ ] Add the excellent `markdown-it-attrs` (https://github.com/arve0/markdown-it-attrs) plugin to extend the markdown syntax to include classes and ids on elements. 
+- [x] ~~Add the excellent `markdown-it-attrs` (https://github.com/arve0/markdown-it-attrs) plugin to extend the markdown syntax to include classes and ids on elements.~~ Done. 
 - [ ] Add walk through for hosting on github pages, netlify, cloudflare pages, etc
 - [ ] Add walk through for scheduled deploy.
 - [x] ~~Cache busting for assets & client side scripts~~ Done. Needs documentation
