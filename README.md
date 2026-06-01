@@ -1,7 +1,9 @@
 # my-11ty-template
 My starting point for new [11ty](https://www.11ty.dev/) projects. 11ty is a Jamstack static site generator that is simple to use/setup. It is easily hostable on Netlify, Github Pages or Cloudflare Pages, and countless other services.  
 
-No guarentees, but I do make an effort to make it generally useful for a new project. It should run anywhere you can run NodeJs If you have any questions, comments, or suggestions, please let open an issue and I will try to respond as soon as I can.  
+No guarentees, but I do make an effort to make it generally useful for a new project. It should run anywhere you can run NodeJs If you have any questions, comments, or suggestions, please let open an issue and I will try to respond as soon as I can.
+
+> **Windows users:** This template assumes you are using [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/). The npm scripts use bash-style process management (`&`, `wait`) that is not compatible with cmd.exe or PowerShell.  
 
 ## Key Dependencies
 - nodejs and npm (whatever 11ty requires)

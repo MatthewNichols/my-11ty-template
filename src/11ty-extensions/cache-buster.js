@@ -27,20 +27,27 @@ function getHash(filePath, length = 10) {
 /**
  * Register cache buster extension. Adds a filter to eleventy to cache bust urls.
  * @param {*} eleventyConfig The eleventy config object
+ * @param {Record<string, string>} sourcePathMap Map of URL prefixes to source directories
+ *   (e.g. { "/styles/": "styles-compiled" }). When a URL matches a prefix, the file is
+ *   read from the source directory rather than _site, which avoids races with passthrough copy.
  */
-export function registerCacheBuster(eleventyConfig) {
+export function registerCacheBuster(eleventyConfig, sourcePathMap = {}) {
 
   /**
    *  Cache busting. Creates a hash of the file and appends it to the url.
    *  @param {string} url The url to cache bust
    *  @returns {string} The cache busted url
-   *  @note This will be one change behind when run in dev mode as the file is not yet built, 
+   *  @note This will be one change behind when run in dev mode as the file is not yet built,
    * but it will work in prod mode as the build is run sequentially
    */
   eleventyConfig.addFilter("cacheBustedUrl", async (url) => {
 
     if (url) {
-      const filePath = path.join(process.cwd(), eleventyConfig.dir.output, url);
+      const matchedPrefix = Object.keys(sourcePathMap).find(prefix => url.startsWith(prefix));
+      const filePath = matchedPrefix
+        ? path.join(process.cwd(), sourcePathMap[matchedPrefix], url.slice(matchedPrefix.length))
+        : path.join(process.cwd(), eleventyConfig.dir.output, url);
+
       try {
         const hashString = await getHash(filePath);
         return `${url}?v=${hashString}`;
@@ -50,7 +57,7 @@ export function registerCacheBuster(eleventyConfig) {
       }
     }
 
-    // This will catch any invalid urls. Probably doesn't do any good but it has the function be valid 
+    // This will catch any invalid urls. Probably doesn't do any good but it has the function be valid
     return `${url}?v=${Date.now()}`;
   });
 

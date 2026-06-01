@@ -30,7 +30,10 @@ export default function(eleventyConfig) {
     ]
   });
 
-  registerExtensions(eleventyConfig);
+  registerExtensions(eleventyConfig, {
+    "/styles/": "styles-compiled",
+    "/scripts/": "client-side-compiled",
+  });
 
   // If you have short codes
   //registerShortCodes(eleventyConfig);
